@@ -8,6 +8,11 @@ public class PlayerMovement : MonoBehaviour
     [Range(0f, 1000f)]
     private float MoveSpeed = 50.0f;
 
+    [SerializeField]
+    private Animator animator;
+
+    private Direction direction = Direction.SOUTH;
+
     private Rigidbody2D rigidBody;
     // Start is called before the first frame update
     void Start()
@@ -19,10 +24,54 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+        UpdateAnimations();
+    }
+
+    private void Move()
+    {
         float X = Input.GetAxisRaw("Horizontal");
         float Y = Input.GetAxisRaw("Vertical");
 
         Vector3 oldPosition = transform.position;
         rigidBody.MovePosition(oldPosition + new Vector3(X, Y, 0) * MoveSpeed * Time.deltaTime);
+    }
+
+    private void UpdateAnimations()
+    {
+        float X = Input.GetAxisRaw("Horizontal");
+        float Y = Input.GetAxisRaw("Vertical");
+
+        if (X == 0.0f && Y == 0.0f)
+        {
+            animator.SetBool("Running", false);
+            animator.SetInteger("Direction", (int)direction);
+        }
+
+        if (X > 0.0f)
+        {
+            animator.SetBool("Running", true);
+            animator.SetInteger("Direction", (int)Direction.EAST);
+            direction = Direction.EAST;
+        }
+        else if (X < 0.0f)
+        {
+            animator.SetBool("Running", true);
+            animator.SetInteger("Direction", (int)Direction.WEST);
+            direction = Direction.WEST;
+        }
+
+        if (Y > 0.0f)
+        {
+            animator.SetBool("Running", true);
+            animator.SetInteger("Direction", (int)Direction.SOUTH);
+            direction = Direction.SOUTH;
+        }
+        else if (Y < 0.0f)
+        {
+            animator.SetBool("Running", true);
+            animator.SetInteger("Direction", (int)Direction.NORTH);
+            direction = Direction.NORTH;
+        }
     }
 }
