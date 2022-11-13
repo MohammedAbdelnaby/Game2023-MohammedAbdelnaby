@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdec7f5b7af324d4684a1892826d245c, type: 3}
   m_Name: SwordSwipe
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
+  Name: Sword Swipe
+  Description: You swing your sword with might!
   ManaCost: 0
-  Damage: 0
+  Damage: 25

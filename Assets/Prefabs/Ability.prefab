@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ability1
+  m_text: SwordSwipe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 858e59e7a9a7fba418e864940277b63e, type: 2}
   m_sharedMaterial: {fileID: -4603042801187719638, guid: 858e59e7a9a7fba418e864940277b63e, type: 2}
@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 3287637060160571664}
   - component: {fileID: 7835965471541254645}
   - component: {fileID: 5674357476734996865}
+  - component: {fileID: 4108574404091263769}
   m_Layer: 5
   m_Name: Ability
   m_TagString: Untagged
@@ -161,7 +162,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6027726685210928903}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -244,7 +245,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: -990076762, guid: 3d2ceb4de2a713147abc06da178fec62, type: 3}
     m_PressedSprite: {fileID: -990076762, guid: 3d2ceb4de2a713147abc06da178fec62, type: 3}
-    m_SelectedSprite: {fileID: -990076762, guid: 3d2ceb4de2a713147abc06da178fec62, type: 3}
+    m_SelectedSprite: {fileID: 1161705050, guid: 3d2ceb4de2a713147abc06da178fec62, type: 3}
     m_DisabledSprite: {fileID: 1161705050, guid: 3d2ceb4de2a713147abc06da178fec62, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -257,15 +258,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: PlayerAbilityUse
-        m_Mode: 2
+      - m_Target: {fileID: 4108574404091263769}
+        m_TargetAssemblyTypeName: AbilityButton, Assembly-CSharp
+        m_MethodName: UseAbility
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Abilitys, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4108574404091263769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027726685210928903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c279f8d4886194086013493107ac18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 0}

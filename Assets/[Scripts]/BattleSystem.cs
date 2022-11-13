@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
+[System.Serializable]
 public class BattleSystem : MonoBehaviour
 {
     [Header("Player")]
@@ -18,6 +17,8 @@ public class BattleSystem : MonoBehaviour
 
     [Header("System Settings")]
     public bool IsPlayerTurn;
+    public float EnemyCoolDownMax;
+    private float EnemyCoolDown;
 
     [Header("Ability Settings")]
     public GameObject ButtonPrefab;
@@ -25,38 +26,33 @@ public class BattleSystem : MonoBehaviour
 
     private void Start()
     {
+        EnemyCoolDown = EnemyCoolDownMax;
         CreateButtons();
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if(!IsPlayerTurn)
+            EnemyCoolDown -= Time.deltaTime;
+        if (!IsPlayerTurn && EnemyCoolDown <= 0.0f)
+        {
+            EnemysTurn();
+            EnemyCoolDown = EnemyCoolDownMax;
+        }
     }
-
-    public void PlayersTurn()
-    {
-
-    }
-
     public void EnemysTurn()
     {
+        //Eenemy AI Here...
         Debug.Log("Passed");
         IsPlayerTurn = true;
     }
-
-    public void PlayerAbilityUse(Abilitys abilitys)
-    {
-
-    }
-
     private void CreateButtons()
     {
         foreach (Abilitys ability in PlayerAbilitys)
         {
             GameObject goTemp = ButtonPrefab;
-            goTemp.GetComponent<Button>().onClick.AddListener(delegate () { PlayerAbilityUse(ability); });
-            goTemp.transform.GetChild(0).GetComponent<TMP_Text>().text = ability.name;
-            GameObject.Instantiate(ButtonPrefab, Vector3.zero, Quaternion.identity, ButtonParent);
+            goTemp.GetComponent<AbilityButton>().ability = ability;
+            GameObject.Instantiate(goTemp, Vector3.zero, Quaternion.identity, ButtonParent);
         }
     }
 }
