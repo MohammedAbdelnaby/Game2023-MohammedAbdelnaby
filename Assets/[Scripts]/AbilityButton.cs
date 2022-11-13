@@ -20,7 +20,7 @@ public class AbilityButton : MonoBehaviour
         if (Battle.IsPlayerTurn)
         {
             Battle.EnemyHealth -= ability.Damage;
-            Battle.EnemyMana -= ability.ManaCost;
+            Battle.PlayerMana -= ability.ManaCost;
             Battle.IsPlayerTurn = false;
             Debug.Log(ability.name + ": " + ability.Description); 
         }
