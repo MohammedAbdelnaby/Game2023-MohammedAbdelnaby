@@ -9,10 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdec7f5b7af324d4684a1892826d245c, type: 3}
-  m_Name: FireBall
+  m_Script: {fileID: 11500000, guid: 29e6612097f3e77409d6d3c0db6a097b, type: 3}
+  m_Name: Reckless
   m_EditorClassIdentifier: 
-  Name: FireBall
-  Description: You cast Fireball
-  ManaCost: 50
-  Damage: 50
+  Name: Reckless
+  Description: Enemy Drops all defence to strike with might
+  Type: 4
+  Buff: 1
+  Debuff: 0
+  ManaCost: 0
+  Damage: 0
+  Armour: -50
+  Heal: 0

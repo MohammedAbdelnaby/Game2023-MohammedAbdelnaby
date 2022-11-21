@@ -17,10 +17,22 @@ public class AbilityButton : MonoBehaviour
 
     public void UseAbility()
     {
-        if (Battle.IsPlayerTurn)
+        if (Battle.IsPlayerTurn && Battle.PlayerMana >= ability.ManaCost)
         {
-            Battle.EnemyHealth -= ability.Damage;
+            if (Battle.EnemyArmour > 0)
+            {
+                Battle.EnemyArmour -= ability.Damage;
+            }
+            else
+            {
+                Battle.EnemyHealth -= ability.Damage;
+            }
+
             Battle.PlayerMana -= ability.ManaCost;
+            Battle.PlayerArmour += ability.Armour;
+            Battle.PlayerHealth += ability.Heal;
+            Battle.EnemyDebuff = ability.Debuff;
+            Battle.PlayerBuff = ability.Buff;
             Battle.IsPlayerTurn = false;
             Debug.Log(ability.name + ": " + ability.Description); 
         }

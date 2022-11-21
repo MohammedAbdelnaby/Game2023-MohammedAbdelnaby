@@ -9,7 +9,7 @@ public class BushBehavior : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            if (Random.value < 0.5f)
+            if (Random.value < 0.2f)
             {
                 Debug.Log("Battle");
                 SceneManager.LoadScene("BattleScene");
