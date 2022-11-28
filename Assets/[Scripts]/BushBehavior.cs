@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class BushBehavior : MonoBehaviour
@@ -11,7 +12,6 @@ public class BushBehavior : MonoBehaviour
         {
             if (Random.value < 0.2f)
             {
-                Debug.Log("Battle");
                 SceneManager.LoadScene("BattleScene");
             }
         }
