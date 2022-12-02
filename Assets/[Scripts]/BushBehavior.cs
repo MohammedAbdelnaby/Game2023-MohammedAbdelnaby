@@ -6,13 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class BushBehavior : MonoBehaviour
 {
+    private LevelChanger TransitionUI;
+
+    private void Start()
+    {
+        TransitionUI = GameObject.FindObjectOfType<LevelChanger>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
             if (Random.value < 0.2f)
             {
-                SceneManager.LoadScene("BattleScene");
+                if (TransitionUI != null)
+                    TransitionUI.FadeToLevel(3);
             }
         }
     }

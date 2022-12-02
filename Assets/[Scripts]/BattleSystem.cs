@@ -36,22 +36,27 @@ public class BattleSystem : MonoBehaviour
     public List<EnemyAbilities> DebuffAbilities;
     public List<EnemyAbilities> BuffAbilities;
 
+    private LevelChanger TransitionUI;
+
     private void Start()
     {
         EnemyCoolDown = EnemyCoolDownMax;
         CreateButtons();
         SplitAbilities();
+        TransitionUI = GameObject.FindObjectOfType<LevelChanger>();
     }
     // Update is called once per frame
     void Update()
     {
         if (PlayerHealth <= 0)
         {
-            SceneManager.LoadScene("MainMenu");
+            if (TransitionUI != null)
+                TransitionUI.FadeToLevel(0);
         }
         if (EnemyHealth <= 0)
         {
-            SceneManager.LoadScene("Game");
+            if (TransitionUI != null)
+                TransitionUI.FadeToLevel(2);
         }
         if(!IsPlayerTurn)
             EnemyCoolDown -= Time.deltaTime;

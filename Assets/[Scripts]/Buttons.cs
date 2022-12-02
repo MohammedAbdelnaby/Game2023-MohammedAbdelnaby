@@ -6,9 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
+    private LevelChanger TransitionUI;
+
+    private void Start()
+    {
+        TransitionUI = GameObject.FindObjectOfType<LevelChanger>();
+    }
     public void Play()
     {
-        SceneManager.LoadScene("Game");
+        if(TransitionUI != null)
+            TransitionUI.FadeToLevel(2);
     }
 
     public void MainMenu()
@@ -29,7 +36,8 @@ public class Buttons : MonoBehaviour
 
     public void Continue()
     {
-        SceneManager.LoadScene("Game");
+        if (TransitionUI != null)
+            TransitionUI.FadeToLevel(2);
     }
 
     public void NewWorld()
@@ -37,7 +45,8 @@ public class Buttons : MonoBehaviour
         PlayerPrefs.SetFloat("X", 0.0f);
         PlayerPrefs.SetFloat("Y", 0.0f);
         PlayerPrefs.SetFloat("Z", 0.0f);
-        SceneManager.LoadScene("Game");
+        if (TransitionUI != null)
+            TransitionUI.FadeToLevel(2);
     }
 
     public void Save()
