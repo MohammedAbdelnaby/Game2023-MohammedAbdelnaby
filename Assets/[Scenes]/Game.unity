@@ -403,7 +403,6 @@ GameObject:
   - component: {fileID: 626664980}
   - component: {fileID: 626664985}
   - component: {fileID: 626664984}
-  - component: {fileID: 626664983}
   - component: {fileID: 626664982}
   m_Layer: 0
   m_Name: Bushes
@@ -958,43 +957,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c41adad09dffab48b3e03a0fc81b6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!66 &626664983
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626664978}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 626664985}
-    m_ColliderPaths:
-    - - X: -40000000
-        Y: -40000000
-      - X: -40000000
-        Y: 40000000
-      - X: -90000000
-        Y: 40000000
-      - X: -90000000
-        Y: -40000000
-  m_CompositePaths:
-    m_Paths:
-    - - {x: -4.000029, y: -4}
-      - {x: -4.000029, y: 4}
-      - {x: -9, y: 3.999971}
-      - {x: -8.99997, y: -4}
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
-  m_UseDelaunayMesh: 0
 --- !u!50 &626664984
 Rigidbody2D:
   serializedVersion: 4
@@ -1028,7 +990,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 100
   m_ExtrusionFactor: 0.00001

@@ -14,10 +14,12 @@ public class PlayerMovement : MonoBehaviour
     private Direction direction = Direction.SOUTH;
 
     private Rigidbody2D rigidBody;
+
+    public Direction Direction { get => direction; set => direction = value; }
+
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(PlayerPrefs.GetFloat("X"), PlayerPrefs.GetFloat("Y"), PlayerPrefs.GetFloat("Z"));
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -73,5 +75,16 @@ public class PlayerMovement : MonoBehaviour
             animator.SetInteger("Direction", (int)Direction.NORTH);
             direction = Direction.NORTH;
         }
+    }
+
+    public void TravelToSavedPoistion()
+    {
+        transform.position = new Vector3(PlayerPrefs.GetFloat("X"), PlayerPrefs.GetFloat("Y"), PlayerPrefs.GetFloat("Z"));
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(new Vector3(PlayerPrefs.GetFloat("X"), PlayerPrefs.GetFloat("Y"), PlayerPrefs.GetFloat("Z")), 0.25f);
     }
 }
